@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:27:04 by ybenlafk          #+#    #+#             */
-/*   Updated: 2022/12/28 10:42:51 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:32:16 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct var
 	int			len;
 	int			cut;
 	int			ref;
+	int			nb1;
+	int			nb2;
+	int			nb3;
 }	t_var;
 
 long		ft_atoi(const char *str);
