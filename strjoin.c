@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:15:42 by ybenlafk          #+#    #+#             */
-/*   Updated: 2022/12/27 21:25:19 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:33:20 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,28 @@ char	*get_str(int size, char **strs, char *sep)
 	return (str);
 }
 
+int	checkdb(int size, char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] >= '0' && str[i][j] <= '9')
+				break ;
+			j++;
+		}
+		if (j == ftstrlen(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		j;
@@ -74,6 +96,11 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	char	*str;
 
+	if (checkdb(size, strs) == 0)
+	{
+		ft_putstr("Error\n");
+		exit(0);
+	}
 	str = get_str(size, strs, sep);
 	i = -1;
 	k = 0;
@@ -81,16 +108,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	{
 		j = 0;
 		while (strs[i][j])
-		{
-			str[k++] = strs[i][j];
-			j++;
-		}
+			str[k++] = strs[i][j++];
 		j = 0;
 		while (sep[j] && i != size - 1)
-		{
-			str[k++] = sep[j];
-			j++;
-		}
+			str[k++] = sep[j++];
 	}
 	str[k] = '\0';
 	return (str);
